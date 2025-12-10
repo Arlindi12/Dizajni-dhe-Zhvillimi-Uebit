@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+    <meta charset="UTF-8">
+    <title>Rreth Nesh</title>
+    <link rel="stylesheet" href="css/style.css">
+</head>
+
+<style>
+    /* ===========================
+   Rreth Nesh
+=========================== */
+.about-intro, .about-history, .about-team, .about-gallery {
+    width: 80%;
+    margin: 30px auto;
+    background: white;
+    padding: 20px;
+    border-radius: 10px;
+    box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+    text-align: center;
+}
+
+.about-intro img.RrethNesh {
+    width: 100%;
+    max-width: 600px;
+    height: auto;
+    border-radius: 10px;
+    margin-bottom: 20px;
+}
+
+/* Ekipi */
+.team-members {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 20px;
+    justify-content: center;
+}
+
+.member {
+    width: 200px;
+    text-align: center;
+}
+
+.member img {
+    width: 100%;
+    height: 200px;
+    object-fit: cover;
+    border-radius: 50%;
+}
+
+/* Galeria */
+.gallery {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 15px;
+    justify-content: center;
+}
+
+.gallery img {
+    width: 250px;
+    height: 150px;
+    object-fit: cover;
+    border-radius: 8px;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+    .about-intro, .about-history, .about-team, .about-gallery {
+        width: 90%;
+    }
+    .member {
+        width: 45%;
+    }
+    .gallery img {
+        width: 45%;
+        height: auto;
+    }
+}
+
+@media (max-width: 480px) {
+    .member, .gallery img {
+        width: 100%;
+    }
+}
+
+
+/* Slider për galeri */
+.slider-gallery {
+    position: relative;
+    max-width: 800px;
+    margin: 20px auto;
+    overflow: hidden;
+    border-radius: 10px;
+}
+
+.slides-gallery {
+    display: flex;
+    transition: transform 0.5s ease-in-out;
+}
+
+.slide-gallery {
+    min-width: 100%;
+    display: none;
+}
+
+.slide-gallery.active {
+    display: block;
+}
+
+.slide-gallery img {
+    width: 100%;
+    height: auto;
+    object-fit: cover;
+}
+
+#prev-gallery, #next-gallery {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    background: rgba(44, 62, 80, 0.7);
+    color: white;
+    border: none;
+    padding: 10px 15px;
+    cursor: pointer;
+    font-size: 18px;
+    border-radius: 5px;
+}
+
+#prev-gallery { left: 10px; }
+#next-gallery { right: 10px; }
+
+</style>
+
+<body>
+
+<header>
+    <h1>Libraria Online</h1>
+    <nav>
+        <a href="index.html">Home</a>
+        <a href="about.html" class="active">Rreth Nesh</a>
+        <a href="books.html">Librat</a>
+        <a href="contact.html">Kontakt</a>
+        <a href="login.html">Login</a>
+    </nav>
+</header>
+
+<!-- Sekcioni intro me foto -->
+<section class="about-intro">
+    <img class="RrethNesh" src="images/Photo6.jpg" alt="Foto Libraria">
+    <h2>Kush jemi ne?</h2>
+    <p>
+        Ne jemi një librari online që sjell librat më të mirë për ju.
+        Synimi ynë është të ofrojmë një përvojë të paharrueshme për çdo lexues,
+        duke siguruar qasje të lehtë në koleksionin tonë të librave.
+    </p>
+</section>
+
+<!-- Historia e bibliotekës -->
+<section class="about-history">
+    <h2>Historia e Bibliotekës</h2>
+    <p>
+        Libraria jonë u themelua në vitin 2015 dhe që atëherë ka rritur koleksionin e saj
+        duke përfshirë mbi 5000 tituj nga autorë të ndryshëm. Ne organizojmë evente leximi
+        dhe klube për fëmijë dhe të rritur.
+    </p>
+</section>
+
+<!-- Ekipi -->
+<section class="about-team">
+    <h2>Ekipi Ynë</h2>
+    <div class="team-members">
+        <div class="member">
+            <img src="images/Ekipi1.jpeg" alt="Emri Personit 1">
+            <h3>Anna Berisha</h3>
+            <p>Menaxhere Librarie</p>
+        </div>
+        <div class="member">
+            <img src="images/Ekipi2.avif" alt="Emri Personit 2">
+            <h3>Arlindi A</h3>
+            <p>Specialist Librash</p>
+        </div>
+        <div class="member">
+            <img src="images/Ekipi3.avif" alt="Emri Personit 3">
+            <h3>Elira Hoxha</h3>
+            <p>Marketing & Evente</p>
+        </div>
+    </div>
+</section>
+
+<!-- Galeria me slider -->
+<section class="about-gallery">
+    <h2>Galeria e Librarisë</h2>
+    <div class="slider-gallery">
+        <div class="slides-gallery">
+            <div class="slide-gallery active"><img src="images/Photo1.jpg" alt="Foto 1"></div>
+            <div class="slide-gallery"><img src="images/Photo2.jpg" alt="Foto 2"></div>
+            <div class="slide-gallery"><img src="images/Photo3.jpg" alt="Foto 3"></div>
+            <div class="slide-gallery"><img src="images/Photo4.jpg" alt="Foto 4"></div>
+        </div>
+        <button id="prev-gallery">&lt;</button>
+        <button id="next-gallery">&gt;</button>
+    </div>
+</section>
+
+<footer>
+  <div class="footer-container">
+    <div class="footer-column">
+      <h3>Rreth Nesh</h3>
+      <p>BookNest është libraria juaj online me librat më të mirë për çdo moshë.</p>
+    </div>
+    <div class="footer-column">
+      <h3>Quick Links</h3>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="books.html">Librat</a></li>
+        <li><a href="about.html">Rreth Nesh</a></li>
+        <li><a href="contact.html">Kontakt</a></li>
+      </ul>
+    </div>
+    <div class="footer-column">
+      <h3>Na ndiqni</h3>
+      <p>
+        <a href="#">Facebook</a> | 
+        <a href="#">Instagram</a> | 
+        <a href="#">Twitter</a>
+      </p>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <p>&copy; 2025 BookNest Library | Të gjitha të drejtat e rezervuara</p>
+  </div>
+</footer>
+
+<script src="js/script.js"></script>
+</body>
+</html>
