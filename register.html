@@ -1,0 +1,163 @@
+<!DOCTYPE html>
+<html lang="sq">
+<head>
+  <meta charset="UTF-8">
+  <title>Register | BookNest</title>
+  <link rel="stylesheet" href="css/style.css">
+  <script src="js/validation.js" defer></script>
+  <style>
+    body {
+      margin: 0;
+      font-family: Arial, sans-serif;
+      background: #f0f2f5;
+      display: flex;
+      justify-content: center;
+      align-items: center;
+      min-height: 100vh;
+    }
+
+    /* Container me animacion slow-motion */
+    .container {
+      display: flex;
+      width: 900px;
+      max-width: 95%;
+      background: #fff;
+      border-radius: 10px;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+      overflow: hidden;
+
+      /* Animacion fillestare */
+      opacity: 0;
+      transform: translateY(50px);
+      animation: fadeInUp 1.5s ease forwards;
+    }
+
+    /* Left-side foto me efekt fade-in */
+    .left-side {
+      flex: 1;
+      background: url('images/Photo1.jpg') center/cover no-repeat;
+
+      opacity: 0;
+      transform: translateX(-30px);
+      animation: fadeInLeft 1.5s ease forwards;
+      animation-delay: 0.3s; /* vonese pak pas container */
+    }
+
+    /* Right-side form me efekt fade-in dhe lëvizje nga poshtë */
+    .right-side {
+      flex: 1;
+      padding: 40px 30px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+
+      opacity: 0;
+      transform: translateY(30px);
+      animation: fadeInUp 1.5s ease forwards;
+      animation-delay: 0.5s;
+    }
+
+    .right-side h2 {
+      color: #2980b9;
+      margin-bottom: 30px;
+      text-align: center;
+    }
+
+    form label {
+      font-weight: bold;
+      margin-bottom: 5px;
+      display: block;
+      color: #333;
+    }
+
+    form input {
+      width: 100%;
+      padding: 12px;
+      margin-bottom: 20px;
+      border: 1px solid #ccc;
+      border-radius: 5px;
+      font-size: 14px;
+    }
+
+    form button {
+      width: 100%;
+      padding: 12px;
+      background-color: #2980b9;
+      color: #fff;
+      border: none;
+      border-radius: 5px;
+      font-size: 16px;
+      cursor: pointer;
+    }
+
+    form button:hover {
+      background-color: #1c5980;
+    }
+
+    .link {
+      text-align: center;
+      margin-top: 15px;
+    }
+
+    .link a {
+      color: #2980b9;
+      text-decoration: none;
+    }
+
+    .link a:hover {
+      text-decoration: underline;
+    }
+
+    /* Responsive për celular */
+    @media (max-width: 768px) {
+      .container {
+        flex-direction: column;
+      }
+      .left-side {
+        height: 200px;
+      }
+    }
+
+    /* Keyframes për animacione */
+    @keyframes fadeInUp {
+      to {
+        opacity: 1;
+        transform: translateY(0);
+      }
+    }
+
+    @keyframes fadeInLeft {
+      to {
+        opacity: 1;
+        transform: translateX(0);
+      }
+    }
+  </style>
+</head>
+<body>
+
+<div class="container">
+  <div class="left-side"></div>
+  <div class="right-side">
+    <h2>Regjistrimi në BookNest</h2>
+    <form id="registerForm">
+      <label>Emri:</label>
+      <input type="text" id="regName" placeholder="Shkruaj emrin" required>
+
+      <label>Email:</label>
+      <input type="email" id="regEmail" placeholder="Shkruaj email-in" required>
+
+      <label>Password:</label>
+      <input type="password" id="regPass" placeholder="Shkruaj fjalëkalimin" required>
+
+      <button type="submit">Register</button>
+
+      <div class="link">
+        Ke llogari? <a href="login.html">Hyr këtu</a>
+      </div>
+    </form>
+  </div>
+</div>
+
+</body>
+</html>
