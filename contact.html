@@ -1,73 +1,59 @@
-<!DOCTYPE html>
-<html lang="sq">
-<head>
-  <meta charset="UTF-8">
-  <title>Kontakt | BookNest</title>
-  <link rel="stylesheet" href="css/style.css">
-</head>
-<body>
+<?php
+$pageTitle = 'BookNest | Kontakt';
+$activePage = 'contact';
+$requireAuth = true;
+include __DIR__ . '/includes/header.php';
 
-<header>
-  <h1>BookNest</h1>
-  <nav>
-    <a href="index.html">Home</a>
-    <a href="books.html">Librat</a>
-    <a href="about.html">Rreth nesh</a>
-    <a href="contact.html" class="active">Kontakt</a>
-  </nav>
-</header>
+$conn = new mysqli("localhost", "root", "", "libraria");
+if ($conn->connect_error) die("DB error");
+
+$success = $error = "";
+
+if ($_SERVER["REQUEST_METHOD"] === "POST") {
+  $name = trim($_POST["name"] ?? "");
+  $email = trim($_POST["email"] ?? "");
+  $message = trim($_POST["message"] ?? "");
+
+  if (strlen($name) < 3) {
+    $error = "Emri duhet të ketë të paktën 3 karaktere.";
+  } elseif (!filter_var($email, FILTER_VALIDATE_EMAIL)) {
+    $error = "Email nuk është valid.";
+  } elseif (strlen($message) < 10) {
+    $error = "Mesazhi duhet të ketë të paktën 10 karaktere.";
+  } else {
+    $stmt = $conn->prepare("INSERT INTO contact_messages (name, email, message) VALUES (?, ?, ?)");
+    $stmt->bind_param("sss", $name, $email, $message);
+
+    if ($stmt->execute()) {
+      $success = "✅ Mesazhi u dërgua me sukses!";
+    } else {
+      $error = "❌ Gabim gjatë dërgimit!";
+    }
+    $stmt->close();
+  }
+}
+
+$conn->close();
+?>
 
 <section class="contact-container">
-  <h2>Kontakto Me Ne</h2>
+  <h2>Kontakt</h2>
 
-  <form id="contactForm">
+  <?php if ($error): ?><div class="error"><?= htmlspecialchars($error) ?></div><?php endif; ?>
+  <?php if ($success): ?><div class="success"><?= htmlspecialchars($success) ?></div><?php endif; ?>
+
+  <form method="POST">
     <label>Emri</label>
-    <input type="text" id="contactName" placeholder="Shkruaj emrin tënd">
+    <input type="text" name="name" required>
 
     <label>Email</label>
-    <input type="email" id="contactEmail" placeholder="shembull@gmail.com">
+    <input type="email" name="email" required>
 
     <label>Mesazhi</label>
-    <textarea id="contactMessage" placeholder="Shkruaj mesazhin tënd"></textarea>
+    <textarea name="message" rows="6" required></textarea>
 
     <button type="submit">Dërgo</button>
   </form>
-
-  <p id="contactError" class="error"></p>
-  <p id="contactSuccess" class="success"></p>
-
 </section>
 
-<footer>
-  <div class="footer-container">
-    <div class="footer-column">
-      <h3>Rreth Nesh</h3>
-      <p>BookNest është libraria juaj online me librat më të mirë për çdo moshë.</p>
-    </div>
-    <div class="footer-column">
-      <h3>Quick Links</h3>
-      <ul>
-        <li><a href="index.html">Home</a></li>
-        <li><a href="books.html">Librat</a></li>
-        <li><a href="about.html">Rreth Nesh</a></li>
-        <li><a href="contact.html">Kontakt</a></li>
-      </ul>
-    </div>
-    <div class="footer-column">
-      <h3>Na ndiqni</h3>
-      <p>
-        <a href="#">Facebook</a> | 
-        <a href="#">Instagram</a> | 
-        <a href="#">Twitter</a>
-      </p>
-    </div>
-  </div>
-  <div class="footer-bottom">
-    <p>&copy; 2025 BookNest Library | Të gjitha të drejtat e rezervuara</p>
-  </div>
-</footer>
-
-<script src="js/script.js"></script>
-
-</body>
-</html>
+<?php include __DIR__ . '/includes/footer.php'; ?>
