@@ -1,1 +1,99 @@
+/* Only applies when <body class="auth-page"> */
+.auth-page{
+  background: #0b1220;
+  color: #e9eefc;
+}
+
+.auth-page .auth-wrapper{
+  min-height: 100vh;
+  display:flex;
+  align-items:center;
+  justify-content:center;
+  padding: 24px 12px;
+}
+
+.auth-page .auth-box{
+  width: 100%;
+  max-width: 420px;
+  background: rgba(255,255,255,0.05);
+  border: 1px solid rgba(255,255,255,0.10);
+  border-radius: 18px;
+  padding: 20px;
+  box-shadow: 0 25px 80px rgba(0,0,0,0.45);
+}
+
+.auth-page .auth-box h2{
+  margin: 0 0 14px;
+  font-size: 22px;
+}
+
+.auth-page label{
+  display:block;
+  margin: 10px 0 6px;
+  color: rgba(233,238,252,0.85);
+}
+
+.auth-page input{
+  width: 100%;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(255,255,255,0.12);
+  background: rgba(255,255,255,0.06);
+  color:#fff;
+  outline:none;
+}
+
+.auth-page input:focus{
+  border-color: rgba(124,58,237,0.55);
+  box-shadow: 0 0 0 4px rgba(124,58,237,0.18);
+}
+
+.auth-page button{
+  width: 100%;
+  margin-top: 14px;
+  padding: 12px 12px;
+  border-radius: 14px;
+  border: 1px solid rgba(124,58,237,0.40);
+  background: rgba(124,58,237,0.18);
+  color:#fff;
+  font-weight: 800;
+  cursor:pointer;
+}
+
+.auth-page button:hover{
+  background: rgba(124,58,237,0.26);
+}
+
+.auth-page .link{
+  margin-top: 12px;
+  color: rgba(233,238,252,0.75);
+  text-align:center;
+}
+
+.auth-page .link a{
+  color:#fff;
+  font-weight:800;
+  text-decoration:none;
+}
+
+.auth-page .link a:hover{
+  text-decoration: underline;
+}
+
+.auth-page .alert{
+  padding: 10px 12px;
+  border-radius: 14px;
+  margin: 10px 0;
+  border: 1px solid rgba(255,255,255,0.10);
+}
+
+.auth-page .alert.error{
+  background: rgba(239,68,68,0.12);
+  border-color: rgba(239,68,68,0.30);
+}
+
+.auth-page .alert.success{
+  background: rgba(34,197,94,0.12);
+  border-color: rgba(34,197,94,0.30);
+}
 
